@@ -15,3 +15,9 @@ export function deleteProductById(productId: number) {
   }
 
 
+  
+export function findProductsByName(productName: string) {
+    return productList.filter((product) => product.name.toLowerCase().includes(productName.toLowerCase()));
+  }
+
+

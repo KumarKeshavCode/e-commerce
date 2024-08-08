@@ -13,4 +13,5 @@ exports.productList = [
     { id: 8, name: 'Amazon Echo Dot', },
     { id: 9, name: 'Fitbit Charge 4', },
     { id: 10, name: 'Nespresso VertuoPlus', },
+    { id: 11, name: 'Samsung  55', },
 ];
