@@ -1,7 +1,7 @@
 console.log("kumar");
 
 
-export const productList: { id: number; name: string; /* other attributes */ }[] = [
+export const productList: { id: number; name: string;  }[] = [
     { id: 1, name: 'iPhone 13 Pro',  },
     { id: 2, name: 'Samsung Galaxy S21',  },
     { id: 3, name: 'Google Pixel 6',  },
