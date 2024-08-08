@@ -5,6 +5,9 @@ const productlist_1 = require("./model/productlist");
 const searchproduct_1 = require("./service/searchproduct");
 const searchproduct_2 = require("./service/searchproduct");
 const searchproduct_3 = require("./service/searchproduct");
+const logger_1 = require("../Logger/logger");
+logger_1.logger.info("Thos is info msg");
+logger_1.logger.error("Thos is error msg");
 //console.log(productList);
 let flag = true;
 while (flag == true) {
@@ -35,11 +38,14 @@ while (flag == true) {
         }
         case "2": {
             console.log("search product by name");
-            const yourwish = readlineSync.question("yes/no");
+            const yourwish = readlineSync.question("yes/no ");
             if (yourwish.toLowerCase() === "yes") {
                 //console.log('Product list:', productList);
                 const productName = readlineSync.question("Enter the product name: ");
                 const foundProducts = (0, searchproduct_3.findProductsByName)(productName);
+                console.log("1");
+                console.log(foundProducts);
+                console.log("2");
                 if (foundProducts.length > 0) {
                     console.log("Found products:");
                     foundProducts.forEach((product) => {

@@ -1,95 +1,82 @@
-var readlineSync = require('readline-sync');
+var readlineSync = require("readline-sync");
 
-import {productList} from './model/productlist';
+import { productList } from "./model/productlist";
 
-import {findProductById} from './service/searchproduct';
-import {deleteProductById} from './service/searchproduct';
-import{findProductsByName} from  './service/searchproduct';
+import { findProductById } from "./service/searchproduct";
+import { deleteProductById } from "./service/searchproduct";
+import { findProductsByName } from "./service/searchproduct";
+
+import {logger}  from "../Logger/logger";
+logger.info("Thos is info msg");
+logger.error("Thos is error msg");
 
 //console.log(productList);
 
+let flag = true;
+while (flag == true) {
+  console.log("1: Perform searching and deletion by id");
+  console.log("2: Search product by name and display matching product ");
+  console.log("3: Exit");
 
+  let i = readlineSync.question("enter your choice");
 
-let flag=true
-while(flag==true){
-    console.log("1: Perform searching and deletion by id");
-    console.log("2: Search product by name and display matching product ");
-    console.log("3: Exit")
+  switch (i) {
+    case "1": {
+      console.log("Product list if u want to show the product list just do ");
 
-    let i=readlineSync.question("enter your choice")
+      const showProductList = readlineSync.question("yes/no");
 
-    
-    switch(i){
-        
-        case '1':{
-            
-console.log("Product list if u want to show the product list just do ");
+      if (showProductList.toLowerCase() === "yes") {
+        console.log("Product list:", productList);
+      }
 
-const showProductList = readlineSync.question("yes/no");
+      const Productid = parseInt(readlineSync.question("enter ur product id"));
 
-if (showProductList.toLowerCase() === "yes") {
-    console.log('Product list:', productList);
-  }
+      // console.log(productList);
 
-const Productid = parseInt(readlineSync.question("enter ur product id"));
+      const foundProduct = findProductById(Productid);
 
-// console.log(productList);
+      if (foundProduct) {
+        console.log("Found product:", foundProduct);
+        deleteProductById(foundProduct.id);
+        console.log("Product removed from the list.");
+        console.log("Updated product list:", productList);
+      } else {
+        console.log("Product not found.");
+      }
 
-const foundProduct = findProductById(Productid);
-
-if (foundProduct) {
-  console.log('Found product:', foundProduct);
-  deleteProductById(foundProduct.id);
-  console.log('Product removed from the list.');
-  console.log('Updated product list:', productList);
-} else {
-  console.log('Product not found.');
-}
-
-            break;
-        }
-        case '2':{
-            
-            console.log("search product by name");
-const yourwish = readlineSync.question("yes/no");
-
-if (yourwish.toLowerCase() === "yes") {
-    //console.log('Product list:', productList);
-
-    
-const productName = readlineSync.question("Enter the product name: ");
-const foundProducts = findProductsByName(productName);
-
-if (foundProducts.length > 0) {
-  console.log('Found products:');
-  foundProducts.forEach((product) => {
-    console.log(`- ${product.name} (ID: ${product.id})`);
-  });
-} else {
-  console.log('No products found.');
-}
-
-
-  }
-
-
-
-
-            break;
-
-        }
-        default:{
-            flag=false;
-            break;
-        }
+      break;
     }
+    case "2": {
+      console.log("search product by name");
+      const yourwish = readlineSync.question("yes/no ");
 
-      
-        
+      if (yourwish.toLowerCase() === "yes") {
+        //console.log('Product list:', productList);
 
+        const productName = readlineSync.question("Enter the product name: ");
+        const foundProducts = findProductsByName(productName);
+        console.log("1");
+       console.log(foundProducts);
+       console.log("2");
+        if (foundProducts.length > 0) {
+          console.log("Found products:");
+          foundProducts.forEach((product) => {
+            console.log(`- ${product.name} (ID: ${product.id})`);
+          });
+        } else {
+          console.log("No products found.");
+        }
+      }
+
+      break;
+    }
+    default: {
+      flag = false;
+      break;
+    }
+  }
 }
-
-
 
 // console.log("Product list if u want to show the product list just do ");
 
@@ -114,14 +101,12 @@ if (foundProducts.length > 0) {
 //   console.log('Product not found.');
 // }
 
-
 // console.log("search product by name");
 // const yourwish = readlineSync.question("yes/no");
 
 // if (yourwish.toLowerCase() === "yes") {
 //     //console.log('Product list:', productList);
 
-    
 // const productName = readlineSync.question("Enter the product name: ");
 // const foundProducts = findProductsByName(productName);
 
@@ -133,12 +118,9 @@ if (foundProducts.length > 0) {
 // } else {
 //   console.log('No products found.');
 // }
-
 
 //   }
 
-
-
 // const productName = readlineSync.question("Enter the product name: ");
 // const foundProducts = findProductsByName(productName);
 
@@ -150,5 +132,3 @@ if (foundProducts.length > 0) {
 // } else {
 //   console.log('No products found.');
 // }
-
-

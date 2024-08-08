@@ -10,5 +10,9 @@
   "description": "",
   "devDependencies": {
     "@types/node": "^22.1.0"
+  },
+  "dependencies": {
+    "typescript-logging": "^2.2.0",
+    "winston": "^3.14.0"
   }
 }
