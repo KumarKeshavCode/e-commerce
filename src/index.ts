@@ -6,10 +6,11 @@ import { findProductById } from "./service/searchproduct";
 import { deleteProductById } from "./service/searchproduct";
 import { findProductsByName } from "./service/searchproduct";
 
-import {logger}  from "../Logger/logger";
-logger.info("Thos is info msg");
-logger.error("Thos is error msg");
+import logger  from "./Logger/logger";
 
+
+
+logger.info("two");
 //console.log(productList);
 
 let flag = true;
@@ -40,6 +41,7 @@ while (flag == true) {
         console.log("Found product:", foundProduct);
         deleteProductById(foundProduct.id);
         console.log("Product removed from the list.");
+        logger.info("Product removed from the list.");
         console.log("Updated product list:", productList);
       } else {
         console.log("Product not found.");

@@ -6,8 +6,8 @@ const searchproduct_1 = require("./service/searchproduct");
 const searchproduct_2 = require("./service/searchproduct");
 const searchproduct_3 = require("./service/searchproduct");
 const logger_1 = require("../Logger/logger");
+console.log("some bs");
 logger_1.logger.info("Thos is info msg");
-logger_1.logger.error("Thos is error msg");
 //console.log(productList);
 let flag = true;
 while (flag == true) {
